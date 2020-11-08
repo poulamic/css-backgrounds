@@ -1,0 +1,1809 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+
+body.scrollHidden {
+  overflow: hidden;
+}
+header {
+  padding: 3rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 1.6rem;
+  padding: 0.6rem;
+}
+
+header p {
+  font-weight: 400;
+}
+
+main {
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12em, 1fr));
+  grid-column-gap: 0.25em;
+  grid-row-gap: 0.25em;
+}
+
+.block {
+  position: relative;
+  padding-top: 100%;
+}
+.block .content {
+  background: white;
+  border: 2px solid #333333;
+  padding: 2%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 82%;
+  visibility: hidden;
+}
+.block button.toggleButton {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 32px;
+  height: 28px;
+  border: none;
+  outline: thin dotted #ddd;
+  background: url("https://www.flaticon.com/svg/static/icons/svg/711/711284.svg")
+    no-repeat;
+  background-size: 75% 75%;
+  background-position: center;
+  background-color: white;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.05), 0px 6px 6px rgba(0, 0, 0, 0.1),
+    0px 8px 8px rgba(0, 0, 0, 0.05), 0px 8px 15px rgba(0, 0, 0, 0.03),
+    0px 30px 30px rgba(0, 0, 0, 0.15), 0px 70px 60px rgba(0, 0, 0, 0.15);
+}
+
+.block::after {
+  content: attr(data-number);
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  padding: 2px 6px;
+}
+
+.block.expand {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+}
+.block.expand .content.show {
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.block.expand .content.show button {
+  align-self: flex-end;
+  color: white;
+  background: black;
+  border: none;
+  outline: thin dotted #ddd;
+  padding: 0.3rem;
+  font-weight: 400;
+}
+
+.block.expand button.toggleButton {
+  background: url("https://www.flaticon.com/svg/static/icons/svg/860/860796.svg")
+    no-repeat;
+  background-size: 64% 64%;
+  background-position: center;
+  background-color: white;
+}
+code {
+  display: block;
+  margin-top: 1rem;
+}
+
+footer {
+  padding: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
+}
+
+.block:nth-of-type(1) {
+  background: repeating-linear-gradient(
+      135deg,
+      #ac54a0 0 2px,
+      transparent 2px 4px
+    )
+    0 0/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(2) {
+  background: repeating-radial-gradient(
+      at 50% 100%,
+      transparent 0 20%,
+      #d41e4e 20% 25%,
+      transparent 25% 30%
+    )
+    0 0/30px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(3) {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 50%)
+      5px 0/20px 20px,
+    radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent 40%) 15px 10px/20px
+      20px,
+    radial-gradient(#ffca08 6%, transparent 8%) 0 0/20px 20px,
+    radial-gradient(#ffca08 6%, transparent 8%) 10px 10px/20px 20px,
+    linear-gradient(45deg, transparent 48%, #000000 49% 51%, transparent 52%) 0
+      0/20px 20px,
+    linear-gradient(-45deg, transparent 48%, #000000 49% 51%, transparent 52%) 0
+      0/20px 20px;
+  background-color: #262626;
+}
+
+.block:nth-of-type(4) {
+  background: radial-gradient(#ac54a0 25%, transparent 26%) 0 0/40px 40px,
+    radial-gradient(#ac54a0 16%, transparent 17%) 20px 20px/40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(5) {
+  background: #ffe588;
+  background-size: 2em 2em;
+  background-image: linear-gradient(
+      45deg,
+      transparent 44%,
+      #d4a700 44% 50%,
+      #fff1c0 52% 56%,
+      transparent 56%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 44%,
+      #d4a700 44% 50%,
+      #fff1c0 52% 56%,
+      transparent 56%
+    );
+}
+
+.block:nth-of-type(6) {
+  background: linear-gradient(135deg, #f25822 25%, transparent 25%) -10px 0/20px
+      20px,
+    linear-gradient(225deg, #f7941d 25%, transparent 25%) -10px 0/20px 20px,
+    linear-gradient(315deg, #f25822 25%, transparent 25%) 0px 0/20px 20px,
+    linear-gradient(45deg, #f7941d 25%, transparent 25%) 0px 0/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(7) {
+  background: repeating-radial-gradient(
+        at 50% 0%,
+        transparent 0 20%,
+        #5c2e91 20% 30%,
+        transparent 30% 40%
+      )
+      0 0/30px 20px,
+    repeating-radial-gradient(
+        at 50% 100%,
+        transparent 0 20%,
+        #5c2e91 20% 30%,
+        transparent 30% 40%
+      )
+      0 0/30px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(8) {
+  background: linear-gradient(
+        45deg,
+        transparent 0 23px,
+        #d41e4e 23px 24px,
+        transparent 24px
+      )
+      0 0/20px 20px,
+    linear-gradient(
+        -45deg,
+        transparent 0 23px,
+        #d41e4e 23px 24px,
+        transparent 24px
+      ) -10px 10px/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(9) {
+  background: repeating-radial-gradient(#d8df20 0 10%, #71bf45 10% 20%) 0 0/40px
+    40px;
+}
+
+.block:nth-of-type(10) {
+  background: radial-gradient(
+      farthest-side,
+      #ffca08 35%,
+      #aaaaaa 36% 40%,
+      transparent 42%
+    ),
+    radial-gradient(
+        farthest-side,
+        #ffca08 35%,
+        #aaaaaa 36% 40%,
+        transparent 42%
+      )
+      8px 40px;
+  background-size: 16px 80px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(11) {
+  background: repeating-linear-gradient(
+    135deg,
+    #01abce 0 2px,
+    transparent 2px 4px,
+    #01abce 4px 8px,
+    transparent 8px 10px,
+    #01abce 10px 12px,
+    transparent 12px 20px
+  );
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(12) {
+  background: linear-gradient(
+      135deg,
+      transparent 15px,
+      #000000 15px 16px,
+      transparent 16px 18px,
+      #000000 18px 19px,
+      transparent 19px 21px,
+      #000000 21px 22px,
+      transparent 22px 24px,
+      #000000 24px 25px,
+      transparent 25px
+    ),
+    linear-gradient(
+      -135deg,
+      transparent 15px,
+      #000000 15px 16px,
+      transparent 16px 18px,
+      #000000 18px 19px,
+      transparent 19px 21px,
+      #000000 21px 22px,
+      transparent 22px 24px,
+      #000000 24px 25px,
+      transparent 25px
+    );
+  background-size: 30px 30px;
+  background-color: #01abce;
+}
+
+.block:nth-of-type(13) {
+  background: linear-gradient(#ffffff 6px, transparent 6px),
+    linear-gradient(to right, #ffffff 6px, transparent 6px),
+    linear-gradient(#01abce 0 1px, transparent 1px 78px) 0 6px/100% 78px,
+    linear-gradient(to right, #01abce 0 1px, transparent 1px 78px) 6px 0/78px
+      100%,
+    linear-gradient(#83e9fe 0 1px, transparent 1px 6px) 0 0/100% 6px,
+    linear-gradient(to right, #83e9fe 0 1px, transparent 1px 6px) 0 0/6px 100%;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(14) {
+  background: linear-gradient(
+      to right,
+      transparent 29px,
+      #ed008c 30px,
+      transparent 31px
+    ),
+    linear-gradient(transparent 19px, #01abce 20px 21px, transparent 21px),
+    repeating-linear-gradient(#83e9fe 0 1px, transparent 1px 10px) no-repeat 0
+      20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(15) {
+  background: radial-gradient(#01abce 5%, transparent 9%) 0 0/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(16) {
+  background: linear-gradient(
+      45deg,
+      transparent 49.4%,
+      #01abce 49.5% 50.5%,
+      transparent 50.6%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49.4%,
+      #01abce 49.5% 50.5%,
+      transparent 50.6%
+    ),
+    linear-gradient(
+      transparent 19.2px,
+      #01abce 19.2px 19.8px,
+      transparent 19.8px
+    ),
+    linear-gradient(
+      to right,
+      transparent 19.2px,
+      #01abce 19.2px 19.8px,
+      transparent 19.8px
+    );
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(17) {
+  background: radial-gradient(
+        circle at 25% 100%,
+        transparent 24%,
+        #01abce 25% 29%,
+        transparent 30%
+      )
+      0 0/40px 20px,
+    radial-gradient(
+        circle at 25% 0%,
+        transparent 24%,
+        #01abce 25% 29%,
+        transparent 30%
+      )
+      20px 20px/40px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(18) {
+  background: repeating-radial-gradient(
+        at 50% 0%,
+        transparent 0 30%,
+        #f25822 20% 30%,
+        transparent 30% 40%
+      )
+      15px 0/30px 20px,
+    repeating-radial-gradient(
+        at 50% 100%,
+        transparent 0 30%,
+        #f25822 30% 40%,
+        transparent 40% 55%
+      )
+      0 0/30px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(19) {
+  background: linear-gradient(
+        315deg,
+        #ffffff 25%,
+        transparent 25% 75%,
+        #ffffff 75%
+      )
+      0 0/20px 20px,
+    linear-gradient(45deg, transparent 25%, #01abce 25% 75%, transparent 75%) 0
+      0/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(20) {
+  background: linear-gradient(155deg, #f25822 25%, transparent 25%) 0 0/15px
+      15px,
+    linear-gradient(335deg, #f25822 25%, transparent 25%) 2px 0/15px 15px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(21) {
+  background: linear-gradient(
+        45deg,
+        transparent 0 9px,
+        #ffca08 9.5px 10px,
+        transparent 10px 20px
+      )
+      0 0/10px 10px,
+    linear-gradient(
+        -45deg,
+        transparent 0 9px,
+        #ffca08 9.5px 10px,
+        transparent 10px 20px
+      ) -6px 0px/10px 10px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(22) {
+  background: repeating-linear-gradient(
+        35deg,
+        transparent 0 4px,
+        #01abce 4px 5px
+      )
+      no-repeat 0 0/50% 100%,
+    repeating-linear-gradient(-35deg, transparent 0 4px, #01abce 4px 5px)
+      no-repeat 100% 0/50% 100%;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(23) {
+  background: repeating-linear-gradient(
+      to right,
+      #71bf45 0 2px,
+      transparent 2px 6px,
+      #d8df20 6px 8px,
+      transparent 8px 20px
+    ),
+    repeating-linear-gradient(
+      #71bf45 0 2px,
+      transparent 2px 6px,
+      #d8df20 6px 8px,
+      transparent 8px 20px
+    );
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(24) {
+  background: radial-gradient(circle at 100% 50%, #01abce 35%, transparent 25%)
+      10px 10px/20px 40px,
+    radial-gradient(circle at 0% 50%, #01abce 35%, transparent 25%) 10px 10px/20px
+      40px,
+    radial-gradient(circle at 50% 100%, #01abce 35%, transparent 25%) 0 0/40px
+      20px,
+    radial-gradient(circle at 50% 0%, #01abce 35%, transparent 25%) 0 0/40px
+      20px,
+    linear-gradient(to right, #ffffff 25%, transparent 25% 75%, #ffffff 75%) 0 0/40px
+      40px,
+    linear-gradient(transparent 25%, #01abce 25% 75%, transparent 75%) 0 10px/40px
+      40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(25) {
+  background: repeating-linear-gradient(
+      transparent 0 20px,
+      #015768 20px 21px,
+      #01abce 21px 22px,
+      transparent 23px 24px,
+      #015768 24px 25px,
+      #01abce 25px 26px,
+      transparent 27px 28px,
+      #015768 28px 29px,
+      #01abce 29px 30px,
+      transparent 31px 32px,
+      #015768 32px 33px,
+      #01abce 33px 34px,
+      transparent 35px 36px,
+      #015768 36px 37px,
+      #01abce 37px 38px,
+      transparent 39px 40px,
+      #015768 40px 41px,
+      #01abce 41px 42px,
+      transparent 43px 44px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #015768 0 1px,
+      #01abce 1px 2px,
+      transparent 3px 4px
+    );
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(26) {
+  background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.05) 50%
+    )
+    0 0/10px 100%;
+  background-color: #01abce;
+}
+
+.block:nth-of-type(27) {
+  background: radial-gradient(
+        circle at center,
+        transparent 67%,
+        #01abce 68% 72%,
+        transparent 73%
+      )
+      0 0/40px 40px,
+    radial-gradient(
+        circle at center,
+        transparent 67%,
+        #01abce 68% 72%,
+        transparent 73%
+      )
+      20px 20px/40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(28) {
+  background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 20px,
+      #015768 20px 21px,
+      #01abce 21px 22px,
+      transparent 23px 24px,
+      #015768 24px 25px,
+      #01abce 25px 26px,
+      transparent 27px 28px,
+      #015768 28px 29px,
+      #01abce 29px 30px,
+      transparent 31px 32px,
+      #015768 32px 33px,
+      #01abce 33px 34px,
+      transparent 35px 36px,
+      #015768 36px 37px,
+      #01abce 37px 38px,
+      transparent 39px 40px,
+      #015768 40px 41px,
+      #01abce 41px 42px,
+      transparent 43px 44px
+    ),
+    repeating-linear-gradient(
+      to right,
+      #015768 0 1px,
+      #01abce 1px 2px,
+      transparent 3px 4px
+    );
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(29) {
+  background: linear-gradient(
+        135deg,
+        #01abce 20%,
+        #ffffff 21% 30%,
+        #01abce 30% 33%,
+        #ffffff 33% 40%,
+        #01abce 40% 45%,
+        transparent 45%
+      )
+      0 0/40px 40px,
+    linear-gradient(
+        225deg,
+        #01abce 20%,
+        #ffffff 21% 30%,
+        #01abce 30% 33%,
+        #ffffff 33% 40%,
+        #01abce 40% 45%,
+        #ffffff 45%
+      )
+      0 0/40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(30) {
+  background: radial-gradient(#ffffff 20%, transparent 20%) 0 0/12px 12px,
+    linear-gradient(#f7941d, #f25822);
+}
+
+.block:nth-of-type(31) {
+  background: linear-gradient(135deg, #f25822 25%, transparent 25%) 0px 8px/36px
+      20px,
+    linear-gradient(225deg, #f25822 25%, transparent 25%) 0px 0/36px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(32) {
+  background: linear-gradient(135deg, #ffffff 25%, transparent 25%) -10px 0/20px
+      20px,
+    linear-gradient(225deg, #ffffff 25%, transparent 25%) -10px 0/20px 20px,
+    linear-gradient(315deg, #ffffff 25%, transparent 25%) 0px 0/20px 20px,
+    linear-gradient(45deg, #ffffff 25%, transparent 25%) 0px 0/20px 20px;
+  background-color: #ffca08;
+}
+
+.block:nth-of-type(33) {
+  background: repeating-linear-gradient(
+        155deg,
+        #5c2e91 0 40%,
+        transparent 40% 100%
+      )
+      0 0/20px 20px,
+    repeating-linear-gradient(335deg, #5c2e91 0 40%, transparent 40% 100%) 20px
+      20px/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(34) {
+  background: linear-gradient(
+        135deg,
+        #00a65e 20%,
+        #ffffff 21% 30%,
+        #00a65e 31% 33%,
+        #ffffff 34% 40%,
+        #00a65e 41% 45%,
+        transparent 46%
+      )
+      0 0/40px 40px,
+    linear-gradient(
+        255deg,
+        #00a65e 20%,
+        #ffffff 21% 30%,
+        #00a65e 31% 33%,
+        #ffffff 34% 40%,
+        #00a65e 41% 45%,
+        #ffffff 46%
+      )
+      0 0/40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(35) {
+  background: radial-gradient(
+      farthest-side,
+      #ffca08 25%,
+      #aaaaaa 26% 50%,
+      #f7941d 51% 65%,
+      transparent 66%
+    ),
+    radial-gradient(
+        farthest-side,
+        #ffca08 25%,
+        #aaaaaa 26% 50%,
+        #f7941d 51% 65%,
+        transparent 66%
+      )
+      20px 40px;
+  background-size: 40px 80px;
+  background-color: #fff6d4;
+}
+
+.block:nth-of-type(36) {
+  background: radial-gradient(
+        circle at 50% 80%,
+        transparent 10%,
+        #01abce 10% 15%,
+        transparent 15% 30%,
+        #01abce 30% 35%,
+        #ffffff 35% 60%,
+        #01abce 60% 65%,
+        transparent 65%
+      )
+      20px 19px/40px 40px,
+    radial-gradient(
+        circle at 50% 80%,
+        transparent 10%,
+        #01abce 10% 15%,
+        transparent 15% 30%,
+        #01abce 30% 35%,
+        transparent 35% 60%,
+        #01abce 60% 65%,
+        transparent 65%
+      )
+      0 0/40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(37) {
+  background: linear-gradient(#d41e4e 6px, transparent 6px),
+    linear-gradient(to right, #d41e4e 6px, transparent 6px),
+    linear-gradient(#f7941d 12px, transparent 12px 54px, #f7941d 54px),
+    linear-gradient(to right, #f7941d 12px, transparent 12px 54px, #f7941d 54px),
+    linear-gradient(#ed008c 18px, transparent 12px 48px, #ed008c 48px),
+    linear-gradient(to right, #ed008c 18px, transparent 18px 48px, #ed008c 48px),
+    linear-gradient(#ffca08 24px, transparent 12px 42px, #ffca08 42px),
+    linear-gradient(to right, #ffca08 24px, transparent 12px 42px, #ffca08 42px);
+  background-size: 60px 60px;
+  background-color: #ac54a0;
+}
+
+.block:nth-of-type(38) {
+  background: linear-gradient(155deg, #01abce 25%, transparent 25%) 0 0/10px
+      10px,
+    linear-gradient(335deg, #01abce 25%, transparent 25%) 0 5px/10px 10px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(39) {
+  background: linear-gradient(335deg, #c71c49 32%, transparent 33%) 11.8px 24px,
+    linear-gradient(155deg, #d41e4e 32%, transparent 33%) 12.5px -11.8px,
+    linear-gradient(335deg, #c71c49 32%, transparent 33%) 0 12px,
+    linear-gradient(155deg, #d41e4e 32%, transparent 33%);
+  background-size: 25px 25px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(40) {
+  background: repeating-linear-gradient(
+    45deg,
+    #8f4426 0 10px,
+    #ffca08 10px,
+    20px,
+    #f7941d 20px 30px,
+    #f25822 20px 40px,
+    #d41e4e 40px 50px
+  );
+}
+
+.block:nth-of-type(41) {
+  background: linear-gradient(
+      135deg,
+      transparent 15px,
+      #00a65e 15px 16px,
+      transparent 16px 18px,
+      #00a65e 18px 19px,
+      transparent 19px 21px,
+      #00a65e 21px 22px,
+      transparent 22px 24px,
+      #00a65e 24px 25px,
+      transparent 25px
+    ),
+    linear-gradient(
+      -135deg,
+      transparent 15px,
+      #00a65e 15px 16px,
+      transparent 16px 18px,
+      #00a65e 18px 19px,
+      transparent 19px 21px,
+      #00a65e 21px 22px,
+      transparent 22px 24px,
+      #00a65e 24px 25px,
+      transparent 25px
+    ),
+    linear-gradient(
+        135deg,
+        transparent 15px,
+        #00a65e 15px 16px,
+        transparent 16px 18px,
+        #00a65e 18px 19px,
+        transparent 19px 21px,
+        #00a65e 21px 22px,
+        transparent 22px 24px,
+        #00a65e 24px 25px,
+        transparent 25px
+      )
+      20px 20px,
+    linear-gradient(
+        -135deg,
+        transparent 15px,
+        #00a65e 15px 16px,
+        transparent 16px 18px,
+        #00a65e 18px 19px,
+        transparent 19px 21px,
+        #00a65e 21px 22px,
+        transparent 22px 24px,
+        #00a65e 24px 25px,
+        transparent 25px
+      )
+      20px 20px;
+  background-size: 40px 40px;
+  background-color: #71bf45;
+}
+
+.block:nth-of-type(42) {
+  background: repeating-linear-gradient(
+      -45deg,
+      transparent 0 20px,
+      #015768 20px 21px,
+      #01abce 21px 22px,
+      transparent 23px 24px,
+      #015768 24px 25px,
+      #01abce 25px 26px,
+      transparent 27px 28px,
+      #015768 28px 29px,
+      #01abce 29px 30px,
+      transparent 31px 32px,
+      #015768 32px 33px,
+      #01abce 33px 34px,
+      transparent 35px 36px,
+      #015768 36px 37px,
+      #01abce 37px 38px,
+      transparent 39px 40px,
+      #015768 40px 41px,
+      #01abce 41px 42px,
+      transparent 43px 44px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      #015768 0 1px,
+      #01abce 1px 2px,
+      transparent 3px 4px
+    );
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(43) {
+  background: linear-gradient(
+      45deg,
+      transparent 24.4%,
+      #01abce 24.5% 25.5%,
+      transparent 25.6% 74.4%,
+      #01abce 74.5% 75.5%,
+      transparent 75.6%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49.4%,
+      #01abce 49.5% 50.5%,
+      transparent 50.6%
+    ),
+    linear-gradient(
+      transparent 19.2px,
+      #01abce 19.2px 19.8px,
+      transparent 19.8px
+    ),
+    linear-gradient(
+      to right,
+      transparent 19.2px,
+      #01abce 19.2px 19.8px,
+      transparent 19.8px
+    );
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(44) {
+  background: radial-gradient(
+        circle at 50% 100%,
+        transparent 20%,
+        #01abce 20% 25%,
+        transparent 25% 40%,
+        #01abce 40% 50%,
+        transparent 50%
+      )
+      0 0/20px 20px,
+    radial-gradient(
+        circle at 50% 100%,
+        transparent 20%,
+        #01abce 20% 25%,
+        transparent 25% 40%,
+        #01abce 40% 50%,
+        transparent 50%
+      )
+      10px 10px/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(45) {
+  background: radial-gradient(
+        circle at 50% 100%,
+        transparent 20%,
+        #01abce 20% 25%,
+        transparent 25% 40%,
+        #01abce 40% 50%,
+        transparent 50%
+      )
+      0 0/20px 20px,
+    radial-gradient(
+        circle at 50% 0,
+        transparent 20%,
+        #01abce 20% 25%,
+        transparent 25% 40%,
+        #01abce 40% 50%,
+        transparent 50%
+      )
+      10px 10px/20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(46) {
+  background: linear-gradient(-135deg, #01abce 25%, transparent 25%) 40px 40px/80px
+      80px,
+    linear-gradient(-45deg, #71bf45 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(135deg, #d8df20 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(45deg, #00a65e 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(-135deg, #01abce 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(-45deg, #71bf45 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(135deg, #d8df20 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(45deg, #00a65e 25%, transparent 25%) 0 0/80px 80px;
+}
+
+.block:nth-of-type(47) {
+  background: linear-gradient(-135deg, #ffca08 25%, transparent 25%) 40px 40px/80px
+      80px,
+    linear-gradient(-45deg, #71bf45 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(135deg, #d8df20 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(45deg, #00a65e 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(-135deg, #ffca08 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(-45deg, #71bf45 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(135deg, #d8df20 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(45deg, #00a65e 25%, transparent 25%) 0 0/80px 80px;
+}
+
+.block:nth-of-type(48) {
+  background: linear-gradient(
+        45deg,
+        transparent 0 23px,
+        #f25822 23px 24px,
+        transparent 24px
+      )
+      0 0/20px 20px,
+    linear-gradient(
+        -45deg,
+        transparent 0 23px,
+        #f25822 23px 24px,
+        transparent 24px
+      )
+      20px 10px/20px 20px;
+  background-color: #f7941d;
+}
+
+.block:nth-of-type(49) {
+  background: linear-gradient(-135deg, #71bf45 25%, transparent 25%) 40px 40px/80px
+      80px,
+    linear-gradient(-45deg, #00a65e 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(135deg, #71bf45 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(45deg, #00a65e 25%, transparent 25%) 40px 40px/80px 80px,
+    linear-gradient(-135deg, #71bf45 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(-45deg, #00a65e 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(135deg, #71bf45 25%, transparent 25%) 0 0/80px 80px,
+    linear-gradient(45deg, #00a65e 25%, transparent 25%) 0 0/80px 80px;
+}
+
+.block:nth-of-type(50) {
+  background: linear-gradient(
+      to right top,
+      transparent 33%,
+      #d8df20 33% 66%,
+      transparent 66%
+    )
+    0 0/3px 3px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(51) {
+  background: linear-gradient(
+        45deg,
+        #71bf45 15%,
+        transparent 15% 85%,
+        #71bf45 80%
+      )
+      0 0/20px 20px,
+    linear-gradient(
+        135deg,
+        transparent 33%,
+        #00a65e 33% 65%,
+        #adb21a 66%,
+        transparent 67%
+      )
+      0 0/20px 20px,
+    linear-gradient(45deg, transparent 33%, #71bf45 33% 66%, transparent 60%) 0
+      0/20px 20px;
+  background-color: #d8df20;
+}
+
+.block:nth-of-type(52) {
+  background: radial-gradient(#ffffff 12%, transparent 12%) 0 0/40px 40px,
+    radial-gradient(#ffffff 12%, transparent 12%) 20px 20px/40px 40px;
+  background-color: #ed008c;
+}
+
+.block:nth-of-type(53) {
+  background: radial-gradient(rgba(255, 255, 255, 0.05) 20%, transparent) 0 0/20px
+      20px,
+    radial-gradient(#ffca08 6%, transparent 8%) 0 0/20px 20px,
+    radial-gradient(#ffca08 6%, transparent 8%) 10px 10px/20px 20px,
+    linear-gradient(45deg, transparent 48%, #000000 49% 51%, transparent 52%) 0
+      0/20px 20px,
+    linear-gradient(-45deg, transparent 48%, #000000 49% 51%, transparent 52%) 0
+      0/20px 20px;
+  background-color: #262626;
+}
+
+.block:nth-of-type(54) {
+  background: linear-gradient(-45deg, #5c2e91, #ac54a0) 0 0/8px 8px;
+}
+
+.block:nth-of-type(55) {
+  background: repeating-radial-gradient(
+        at 50% 0%,
+        transparent 0 20%,
+        #f25822 20% 30%,
+        transparent 30% 40%
+      )
+      15px 0/30px 20px,
+    repeating-radial-gradient(
+        at 50% 100%,
+        transparent 0 30%,
+        #f25822 30% 40%,
+        transparent 40% 55%
+      )
+      0 0/30px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(56) {
+  background: repeating-linear-gradient(
+        155deg,
+        #5c2e91 0 40%,
+        transparent 40% 100%
+      )
+      0 0/20px 20px,
+    repeating-linear-gradient(335deg, #5c2e91 0 40%, transparent 40% 100%) 20px
+      20px/20px 20px;
+}
+
+.block:nth-of-type(57) {
+  background: repeating-linear-gradient(
+      45deg,
+      transparent 0 14px,
+      #000000 15px 16px,
+      transparent 16px 60px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 14px,
+      #000000 15px 16px,
+      transparent 16px 60px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 44.5px,
+      #aaaaaa 45px 45.5px,
+      transparent 45.5px 60px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 44.5px,
+      #aaaaaa 45px 45.5px,
+      transparent 45.5px 60px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 30px,
+      rgba(0, 0, 0, 0.6) 30px 60px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 30px,
+      rgba(0, 0, 0, 0.6) 30px 60px
+    );
+  background-color: #d41e4e;
+}
+
+.block:nth-of-type(58) {
+  background: radial-gradient(
+        circle at 45% 45%,
+        #aaaaaa 2%,
+        #ffca08 4%,
+        #000000 6% 7%,
+        transparent 8%
+      )
+      0 0/60px 60px,
+    radial-gradient(
+        circle at 45% 45%,
+        #aaaaaa 2%,
+        #ffca08 4%,
+        #000000 6% 7%,
+        transparent 8%
+      )
+      30px 30px/60px 60px,
+    radial-gradient(circle at 100% 50%, rgba(0, 0, 0, 0.9), transparent 80%) 0 0/60px
+      60px,
+    radial-gradient(circle at 100% 50%, rgba(0, 0, 0, 0.9), transparent 80%)
+      30px 30px/60px 60px;
+  background-color: #262626;
+}
+
+.block:nth-of-type(59) {
+  background: linear-gradient(transparent 80%, #8f4426 80%) 0 0/40px 40px,
+    linear-gradient(-125deg, transparent 25%, #8f4426 25% 35%, transparent 25%)
+      0 0/40px 40px,
+    linear-gradient(125deg, transparent 25%, #8f4426 25% 35%, transparent 25%) 0
+      0/40px 40px,
+    linear-gradient(#ffffff 30%, transparent 30% 70%, #ffffff 70%) 0 0/10px 4px,
+    linear-gradient(to right, #ffffff 10%, #d41e4e 10% 90%, #ffffff 90%) 0 0/10px
+      4px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(60) {
+  background: radial-gradient(#d8df20 10%, #71bf45 10% 20%, transparent 20%)-60px -30px/60px
+      60px,
+    radial-gradient(#d8df20 10%, #71bf45 10% 20%, transparent 20%)-30px -60px/60px
+      60px,
+    radial-gradient(#d8df20 30%, transparent 30%)-60px -30px/60px 60px,
+    radial-gradient(#d8df20 30%, transparent 30%)-30px -60px/60px 60px,
+    linear-gradient(
+        45deg,
+        transparent 45%,
+        #00a65e 46% 47%,
+        #71bf45 48% 52%,
+        #00a65e 53% 54%,
+        transparent 55%
+      )
+      0 0/60px 60px,
+    linear-gradient(
+        -45deg,
+        transparent 45%,
+        #00a65e 46% 47%,
+        #71bf45 48% 52%,
+        #00a65e 53% 54%,
+        transparent 55%
+      )
+      0 0/60px 60px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(61) {
+  background: repeating-linear-gradient(
+        0.25turn,
+        transparent,
+        rgba(0, 0, 0, 0.3) 11vh
+      )
+      1vh 1vh/44vh 77vh,
+    repeating-linear-gradient(transparent, rgba(0, 0, 0, 0.3) 11vh) no-repeat
+      1vh 1vh/44vh 77vh,
+    repeating-linear-gradient(
+        transparent 0 0.2vh,
+        rgba(255, 255, 255, 0.02) 0.4vh 1.2vh,
+        transparent 2vh 9.5vh,
+        rgba(255, 255, 255, 0.02) 10vh 11vh
+      )
+      no-repeat 1vh 1vh/44vh 77vh,
+    repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.02) 0vh 1vh,
+        transparent 2vh 9vh,
+        rgba(0, 0, 0, 0.5) 10vh 11vh
+      )
+      no-repeat 1vh 1vh/44vh 77vh,
+    linear-gradient(#422513, #422513) no-repeat;
+}
+
+.block:nth-of-type(62) {
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.2) 4px,
+      transparent 18px 19px,
+      rgba(255, 255, 255, 0.08) 19px 21px,
+      transparent 22px 40px
+    ),
+    linear-gradient(
+      45deg,
+      #71bf45 15%,
+      #ffca08 15% 30%,
+      #f7941d 30% 45%,
+      #f25822 45% 60%,
+      #ed008c 60% 75%,
+      #d41e4e 75% 90%,
+      #5c2e91 90%
+    );
+}
+
+.block:nth-of-type(63) {
+  background: radial-gradient(#ffffff 50%, transparent 51%) 0 0/40px 40px,
+    radial-gradient(#ffffff 50%, transparent 51%) 20px 20px/40px 40px,
+    radial-gradient(circle at 50% 0, rgba(0, 0, 0, 0.1) 40%, transparent 50%)
+      10px 10px/20px 20px,
+    radial-gradient(circle at 100% 50%, rgba(0, 0, 0, 0.1) 20%, transparent 50%)
+      10px 10px/20px 20px;
+  background-color: #71bf45;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(64) {
+  background: repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.2) 4px,
+      transparent 28px 40px
+    ),
+    linear-gradient(
+      45deg,
+      #71bf45 15%,
+      #ffca08 15% 30%,
+      #f7941d 30% 45%,
+      #f25822 45% 60%,
+      #ed008c 60% 75%,
+      #d41e4e 75% 90%,
+      #5c2e91 90%
+    );
+}
+
+.block:nth-of-type(65) {
+  background: radial-gradient(#ffffff 50%, transparent 51%) 0 0/40px 40px,
+    radial-gradient(#ffffff 50%, transparent 51%) 20px 20px/40px 40px,
+    radial-gradient(#71bf45 50%, transparent 51%) 0 20px/40px 40px,
+    radial-gradient(#01abce 50%, transparent 51%) 20px 0px/40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(66) {
+  background: repeating-linear-gradient(
+      transparent 0 38.5px,
+      #aaaaaa 38.5px 39.5px,
+      transparent 39.5px 44.5px,
+      #aaaaaa 44.5px 45.5px,
+      transparent 45.5px 50.5px,
+      #aaaaaa 50.5px 51.5px,
+      transparent 51.5px 60px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0 38.5px,
+      #aaaaaa 38.5px 39.5px,
+      transparent 39.5px 44.5px,
+      #aaaaaa 44.5px 45.5px,
+      transparent 45.5px 50.5px,
+      #aaaaaa 50.5px 51.5px,
+      transparent 51.5px 60px
+    ),
+    repeating-linear-gradient(
+      transparent 0 8.5px,
+      #f25822 9px 10px,
+      transparent 10.5px 20.5px,
+      #f25822 21px 22px,
+      transparent 22.5px 60px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0 8.5px,
+      #f25822 9px 10px,
+      transparent 10.5px 20.5px,
+      #f25822 21px 22px,
+      transparent 22.5px 60px
+    ),
+    repeating-linear-gradient(transparent 0 30px, rgba(0, 0, 0, 0.5) 30px 60px),
+    repeating-linear-gradient(
+      to right,
+      transparent 0 30px,
+      rgba(0, 0, 0, 0.5) 30px 60px
+    );
+  background-color: #fff6d4;
+}
+
+.block:nth-of-type(67) {
+  background: linear-gradient(
+        155deg,
+        transparent 20%,
+        #d41e4e 20% 50%,
+        transparent 30%
+      )
+      0 -15px,
+    linear-gradient(155deg, transparent 20%, #d41e4e 20% 50%, transparent 30%)
+      30px 45px;
+  background-size: 60px 120px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(68) {
+  background: repeating-linear-gradient(
+    155deg,
+    #d41e4e 10px,
+    #f25822 10px 20px,
+    #f7941d 20px 30px,
+    #ffca08 30px 40px,
+    #d8df20 40px 50px
+  );
+  background-size: 40px 100%;
+}
+
+.block:nth-of-type(69) {
+  background: linear-gradient(
+        -135deg,
+        #d41e4e 25%,
+        transparent 25% 75%,
+        #d41e4e 75%
+      )
+      20px -36px,
+    linear-gradient(135deg, #d41e4e 25%, transparent 25% 75%, #d41e4e 75%);
+  background-size: 40px 72px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(70) {
+  background: linear-gradient(
+      -135deg,
+      #f7941d 25%,
+      transparent 25% 75%,
+      #f7941d 75%
+    ),
+    linear-gradient(135deg, #f7941d 25%, transparent 25% 75%, #f7941d 75%);
+  background-size: 40px 72px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(71) {
+  background: linear-gradient(
+        -135deg,
+        #ed008c 33%,
+        transparent 33% 66%,
+        #ed008c 66%
+      )
+      6px 0,
+    linear-gradient(135deg, #ed008c 33%, transparent 33% 66%, #ed008c 66%) 6px 0;
+  background-size: 48px 5px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(72) {
+  background: linear-gradient(
+      60deg,
+      #015768 25%,
+      transparent 25% 75%,
+      #015768 66%
+    ),
+    linear-gradient(120deg, #015768 25%, transparent 25% 75%, #015768 66%);
+  background-size: 30px 54px;
+  background-color: #00a65e;
+}
+
+.block:nth-of-type(73) {
+  background: repeating-linear-gradient(#015768 0 1px, transparent 1px 4px),
+    linear-gradient(60deg, #015768 25%, transparent 25% 75%, #015768 66%),
+    linear-gradient(120deg, #015768 25%, transparent 25% 75%, #015768 66%);
+  background-size: 30px 54px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(74) {
+  background: linear-gradient(
+      -135deg,
+      #d41e4e 12%,
+      transparent 12% 88%,
+      #d41e4e 88%
+    ),
+    linear-gradient(135deg, #d41e4e 12%, transparent 12% 88%, #d41e4e 88%),
+    linear-gradient(-135deg, #f7941d 33%, transparent 33% 66%, #f7941d 66%),
+    linear-gradient(135deg, #f7941d 33%, transparent 33% 66%, #f7941d 66%);
+  background-size: 20px 20px;
+  background-color: #fff6d4;
+}
+
+.block:nth-of-type(75) {
+  background: linear-gradient(
+        -135deg,
+        #ffffff 8%,
+        transparent 8% 92%,
+        #ffffff 92%
+      )
+      0 6px,
+    linear-gradient(135deg, #ffffff 8%, transparent 8% 92%, #ffffff 92%) 0 6px,
+    linear-gradient(-135deg, #000000 25%, transparent 25% 75%, #000000 75%),
+    linear-gradient(135deg, #000000 25%, transparent 25% 75%, #000000 75%);
+  background-size: 26px 26px;
+  background-color: #d41e4e;
+}
+
+.block:nth-of-type(76) {
+  background: radial-gradient(transparent 10%, #d41e4e 10% 20%, transparent 20%)
+      0 0/30px 30px,
+    linear-gradient(
+        transparent 40%,
+        #d41e4e 40% 41%,
+        transparent 41% 43%,
+        #d41e4e 43% 44%,
+        transparent 44% 56%,
+        #d41e4e 56% 57%,
+        transparent 57% 59%,
+        #d41e4e 59% 60%,
+        transparent 60%
+      )
+      0 0/100% 60px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(77) {
+  background: linear-gradient(120deg, transparent 75%, #000000 75%),
+    linear-gradient(240deg, transparent 75%, #000000 75%),
+    linear-gradient(120deg, transparent 75%, #ffca08 75%) 10px -16.2px,
+    linear-gradient(240deg, transparent 75%, #ffca08 75%) 10px 16.2px;
+  background-size: 20px 32.4px;
+  background-color: #fff6d4;
+}
+
+.block:nth-of-type(78) {
+  background: linear-gradient(120deg, transparent 75%, #000000 75%),
+    linear-gradient(240deg, transparent 75%, #000000 75%),
+    linear-gradient(120deg, transparent 75%, #000000 75%) 10px -16.2px,
+    linear-gradient(240deg, transparent 75%, #000000 75%) 10px 16.2px;
+  background-size: 20px 32.4px;
+  background-color: #ffe06e;
+}
+
+.block:nth-of-type(79) {
+  background: linear-gradient(
+      -45deg,
+      #5c2e91 20%,
+      transparent 20% 80%,
+      #5c2e91 80% 100%
+    ),
+    linear-gradient(45deg, #5c2e91 20%, transparent 20% 80%, #5c2e91 80% 100%),
+    linear-gradient(-45deg, #ffffff 33%, transparent 33% 66%, #ffffff 66%),
+    linear-gradient(45deg, transparent 33%, #ac54a0 33% 66%, transparent 66%);
+  background-size: 20px 20px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(80) {
+  background: linear-gradient(
+      -45deg,
+      #01abce 30%,
+      transparent 30% 70%,
+      #01abce 70% 100%
+    ),
+    linear-gradient(45deg, #01abce 30%, transparent 30% 70%, #01abce 70% 100%),
+    linear-gradient(-45deg, #37dcfe 33%, transparent 33% 66%, #37dcfe 66%),
+    linear-gradient(45deg, transparent 33%, #01819b 33% 66%, transparent 66%);
+  background-size: 20px 20px;
+  background-color: #37dcfe;
+}
+
+.block:nth-of-type(81) {
+  background: repeating-linear-gradient(
+    -35deg,
+    transparent 0 4px,
+    rgba(255, 255, 255, 0.5) 4px 8px
+  );
+  background-color: #d41e4e;
+}
+
+.block:nth-of-type(82) {
+  background: linear-gradient(45deg, transparent, #753ab8),
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0 4px,
+      rgba(255, 255, 255, 0.5) 4px 8px
+    );
+  background-color: #ac54a0;
+}
+
+.block:nth-of-type(83) {
+  background: repeating-linear-gradient(
+      35deg,
+      transparent 0 4px,
+      rgba(255, 255, 255, 0.5) 4px 8px
+    ),
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0 4px,
+      rgba(255, 255, 255, 0.5) 4px 8px
+    ),
+    linear-gradient(45deg, #ffca08, #f9ab4e);
+}
+
+.block:nth-of-type(84) {
+  background: linear-gradient(
+        60deg,
+        #a85e06 12%,
+        transparent 12% 88%,
+        #a85e06 88%
+      )
+      15px 27px,
+    linear-gradient(120deg, #a85e06 12%, transparent 12% 88%, #a85e06 88%) 15px
+      27px,
+    linear-gradient(60deg, #015768 25%, transparent 25% 75%, #015768 66%),
+    linear-gradient(120deg, #015768 25%, transparent 25% 75%, #015768 66%);
+  background-size: 30px 54px;
+  background-color: #00a65e;
+}
+
+.block:nth-of-type(85) {
+  background: linear-gradient(
+        60deg,
+        #a85e06 12%,
+        transparent 12% 88%,
+        #a85e06 88%
+      )
+      15px 27px,
+    linear-gradient(120deg, #a85e06 12%, transparent 12% 88%, #a85e06 88%) 15px
+      27px,
+    linear-gradient(60deg, #015768 16%, transparent 16% 84%, #015768 84%),
+    linear-gradient(120deg, #015768 16%, transparent 16% 84%, #015768 84%);
+  background-size: 30px 54px;
+  background-color: #00a65e;
+}
+
+.block:nth-of-type(86) {
+  background: radial-gradient(
+        #01abce 25%,
+        transparent 25% 35%,
+        #01abce 35% 50%,
+        transparent 50%
+      )
+      20px 20px,
+    radial-gradient(
+      #01abce 25%,
+      transparent 25% 35%,
+      #01abce 35% 50%,
+      transparent 50%
+    );
+  background-size: 40px 40px;
+  background-color: #cff7ff;
+}
+
+.block:nth-of-type(87) {
+  background: radial-gradient(
+        #01abce 15%,
+        transparent 15% 20%,
+        #01abce 20% 30%,
+        transparent 30%
+      )
+      20px 20px,
+    radial-gradient(
+      #01abce 25%,
+      transparent 25% 35%,
+      #01abce 35% 50%,
+      transparent 50%
+    );
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(88) {
+  background: linear-gradient(120deg, transparent 70%, #ffffff 70%),
+    linear-gradient(240deg, transparent 70%, #ffffff 70%),
+    linear-gradient(120deg, transparent 65%, #5c2e91 65%),
+    linear-gradient(240deg, transparent 65%, #5c2e91 65%),
+    linear-gradient(120deg, transparent 60%, #d41e4e 60%),
+    linear-gradient(240deg, transparent 60%, #d41e4e 60%);
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(89) {
+  background: linear-gradient(120deg, transparent 80%, #71bf45 80%) 0 10px,
+    linear-gradient(240deg, transparent 80%, #71bf45 80%) 0 10px,
+    linear-gradient(120deg, transparent 80%, #d41e4e 80%),
+    linear-gradient(240deg, transparent 80%, #d41e4e 80%);
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(90) {
+  background: linear-gradient(120deg, transparent 80%, #01819b 80%) 0 8px,
+    linear-gradient(240deg, transparent 80%, #01819b 80%) 0 8px,
+    linear-gradient(120deg, transparent 75%, #9ceeff 75%),
+    linear-gradient(240deg, transparent 75%, #9ceeff 75%);
+  background-size: 40px 40px;
+  background-color: #cff7ff;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(91) {
+  background: linear-gradient(-60deg, transparent 80%, #015768 80%),
+    linear-gradient(60deg, transparent 80%, #015768 80%),
+    linear-gradient(120deg, transparent 80%, #01819b 80%) 20px 30px,
+    linear-gradient(240deg, transparent 80%, #01819b 80%) 20px 30px;
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(92) {
+  background: linear-gradient(
+        -60deg,
+        transparent 85%,
+        rgba(1, 87, 104, 0.8) 85%
+      )
+      0 15px,
+    linear-gradient(60deg, transparent 85%, rgba(1, 87, 104, 0.8) 85%) 0 15px,
+    linear-gradient(-60deg, transparent 85%, #01819b 85%),
+    linear-gradient(60deg, transparent 85%, #01819b 85%),
+    linear-gradient(120deg, transparent 85%, rgba(1, 87, 104, 0.8) 85%) 40px
+      55px,
+    linear-gradient(240deg, transparent 85%, rgba(1, 87, 104, 0.8) 85%) 40px
+      55px,
+    linear-gradient(120deg, transparent 85%, #01819b 85%) 40px 40px,
+    linear-gradient(240deg, transparent 85%, #01819b 85%) 40px 40px;
+  background-size: 80px 80px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(93) {
+  background: repeating-linear-gradient(
+      transparent 0 8px,
+      rgba(212, 30, 78, 0.5) 8px 16px
+    ),
+    repeating-linear-gradient(
+      to right,
+      transparent 0 8px,
+      rgba(212, 30, 78, 0.5) 8px 16px
+    );
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(94) {
+  background: radial-gradient(transparent 45%, #71bf45 46% 50%, transparent 50%),
+    radial-gradient(transparent 45%, #71bf45 46% 50%, transparent 50%) 15px 15px,
+    radial-gradient(transparent 45%, #71bf45 46% 50%, transparent 50%) 25px 25px;
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(95) {
+  background: radial-gradient(#ed008c 15%, transparent 16%),
+    linear-gradient(45deg, transparent 49%, #ed008c 49% 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, #ed008c 49% 51%, transparent 51%);
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(96) {
+  background: radial-gradient(
+    transparent 10%,
+    #000000 10% 20%,
+    transparent 20% 30%,
+    #000000 30% 40%,
+    transparent 40% 50%,
+    #000000 50% 60%,
+    transparent 60% 70%,
+    #000000 70% 80%
+  );
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(97) {
+  background: radial-gradient(
+      circle at 100% 100%,
+      #ffffff 10%,
+      #000000 10% 20%,
+      #ffffff 20% 30%,
+      #000000 30% 40%,
+      #ffffff 40% 50%,
+      #000000 50% 60%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 0 0,
+      transparent 10%,
+      #000000 10% 20%,
+      transparent 20% 30%,
+      #000000 30% 40%,
+      transparent 40% 50%,
+      #000000 50% 60%,
+      transparent 60% 70%,
+      #000000 70% 80%,
+      transparent 80%
+    );
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(98) {
+  background: radial-gradient(
+      circle at 100% 100%,
+      #ffffff 15%,
+      #000000 15% 20%,
+      #ffffff 20% 25%,
+      #000000 25% 30%,
+      #ffffff 30% 35%,
+      #000000 35% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 0%,
+      transparent 8%,
+      #000000 8% 16%,
+      #ffffff 16% 24%,
+      #000000 24% 32%,
+      #ffffff 32% 40%,
+      #000000 40% 48%,
+      transparent 48%
+    ),
+    radial-gradient(
+      circle at 0 100%,
+      transparent 15%,
+      #000000 15% 20%,
+      transparent 20% 25%,
+      #000000 25% 30%,
+      transparent 30% 35%,
+      #000000 35% 40%,
+      transparent 40%
+    );
+  background-size: 80px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(99) {
+  background: radial-gradient(
+      #ffffff 5%,
+      #000000 5% 10%,
+      #01abce 10% 15%,
+      #000000 15% 20%,
+      #f7941d 20% 25%,
+      #ffca08 25% 30%,
+      #d41e4e 30% 35%,
+      #000000 35% 40%,
+      #5c2e91 40% 45%,
+      #000000 45% 50%,
+      #00a65e 50% 55%,
+      transparent 55%
+    ),
+    radial-gradient(
+        #ffffff 5%,
+        #000000 5% 10%,
+        #01abce 10% 15%,
+        #000000 15% 20%,
+        #f7941d 20% 25%,
+        #ffca08 25% 30%,
+        #d41e4e 30% 35%,
+        #000000 35% 40%,
+        #5c2e91 40% 45%,
+        #000000 45% 50%,
+        #00a65e 50% 55%,
+        transparent 55%
+      )
+      0 20px,
+    radial-gradient(
+        #ffffff 5%,
+        #000000 5% 10%,
+        #01abce 10% 15%,
+        #000000 15% 20%,
+        #f7941d 20% 25%,
+        #ffca08 25% 30%,
+        #d41e4e 30% 35%,
+        #000000 35% 40%,
+        #5c2e91 40% 45%,
+        #000000 45% 50%,
+        #00a65e 50% 55%,
+        transparent 55%
+      )
+      20px 0,
+    radial-gradient(
+        #ffffff 5%,
+        #000000 5% 10%,
+        #01abce 10% 15%,
+        #000000 15% 20%,
+        #ffffff 20% 25%,
+        #ffca08 25% 30%,
+        #d41e4e 30% 35%,
+        #000000 35% 40%,
+        #5c2e91 40% 45%,
+        #000000 45% 50%,
+        #00a65e 50% 55%,
+        transparent 55%
+      )
+      20px 20px;
+  background-size: 40px 40px;
+  background-color: #ffffff;
+}
+
+.block:nth-of-type(100) {
+  background: radial-gradient(
+      circle at 50% 100%,
+      #ffca08 5%,
+      #8f4426 5% 10%,
+      #ffca08 10% 15%,
+      #8f4426 15% 20%,
+      #ffca08 20% 25%,
+      #8f4426 25% 30%,
+      #ffca08 30% 35%,
+      #8f4426 35% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 100% 50%,
+      #ffca08 5%,
+      #8f4426 5% 10%,
+      #ffca08 10% 15%,
+      #8f4426 15% 20%,
+      #ffca08 20% 25%,
+      #8f4426 25% 30%,
+      #ffca08 30% 35%,
+      #8f4426 35% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 50% 0%,
+      #ffca08 5%,
+      #8f4426 5% 10%,
+      #ffca08 10% 15%,
+      #8f4426 15% 20%,
+      #ffca08 20% 25%,
+      #8f4426 25% 30%,
+      #ffca08 30% 35%,
+      #8f4426 35% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 0 50%,
+      #ffca08 5%,
+      #8f4426 5% 10%,
+      #ffca08 10% 15%,
+      #8f4426 15% 20%,
+      #ffca08 20% 25%,
+      #8f4426 25% 30%,
+      #ffca08 30% 35%,
+      #8f4426 35% 40%,
+      transparent 40%
+    );
+  background-size: 80px 80px;
+  background-color: #ffca08;
+}
