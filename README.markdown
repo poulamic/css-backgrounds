@@ -1,5 +1,4 @@
-# CSS Background Gradients
+Online at https://css-backgrounds.netlify.app/ 
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/poulamic/pen/jOrvxvg](https://codepen.io/poulamic/pen/jOrvxvg).
-
-Codepen Challenge - Sep 2020 (Week1)
+Background created with CSS gradients, initially created as a part of Codepen challenge.
+Codepen URL: [https://codepen.io/poulamic/pen/qBZKKrP](https://codepen.io/poulamic/pen/qBZKKrP).
